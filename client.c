@@ -6,17 +6,17 @@
 /*   By: vde-vasc <vde-vasc@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:17:41 by vde-vasc          #+#    #+#             */
-/*   Updated: 2022/08/23 22:59:06 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2022/08/23 23:40:24 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void transl_char_bit(int pid, char sign)
+void	transl_char_bit(int pid, char sign)
 
 {
 	int	i;
-	
+
 	i = 7;
 	while (i >= 0)
 	{

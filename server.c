@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:16:50 by vde-vasc          #+#    #+#             */
-/*   Updated: 2022/08/23 22:00:30 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2022/08/23 23:42:25 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	check_signal(int sig)
 
 {
 	static int	bin;
-	static char chr;
+	static char	chr;
 
 	if (bin < 8)
 	{
@@ -35,19 +35,12 @@ void	check_signal(int sig)
 int	main(void)
 
 {
-	//struct sigaction sa;
-	int pid;
+	int	pid;
 
 	pid = getpid();
-	
 	ft_printf("Server PID: %i\n", pid);
-	//sa.sa_handler = &check_signal;
 	signal(SIGUSR1, check_signal);
 	signal(SIGUSR2, check_signal);
 	while (1)
-	{
 		pause();
-		//sigaction(SIGUSR1, &sa, NULL);
-		//sigaction(SIGUSR2, &sa, NULL);
-	}
 }
