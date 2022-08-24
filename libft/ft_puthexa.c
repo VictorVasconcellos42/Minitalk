@@ -6,11 +6,11 @@
 /*   By: vde-vasc <vde-vasc@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 10:31:38 by vde-vasc          #+#    #+#             */
-/*   Updated: 2022/07/21 14:55:09 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2022/08/24 14:11:51 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int	ft_puthexa(unsigned long num, char flag)
 

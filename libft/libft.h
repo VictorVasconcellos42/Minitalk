@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 18:23:30 by vde-vasc          #+#    #+#             */
-/*   Updated: 2022/06/09 09:45:07 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2022/08/24 14:10:35 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -56,6 +57,14 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	*ft_itoa(int n);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+int		ft_printf(const char *text, ...);
+int		ft_putchar(char c);
+int		ft_putstr(char *str);
+int		ft_putnbr(int num);
+int		ft_puthexa_case(unsigned long num, char flags);
+int		ft_puthexa(unsigned long num, char flags);
+int		argument_case(char c, va_list arguments);
+int		ft_putunbr(unsigned int number);
 
 void	ft_lstadd_front(t_list **lst, t_list *add);
 t_list	*ft_lstnew(void *content);

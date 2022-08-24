@@ -6,11 +6,11 @@
 /*   By: vde-vasc <vde-vasc@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 08:23:29 by vde-vasc          #+#    #+#             */
-/*   Updated: 2022/07/14 18:19:49 by vde-vasc         ###   ########.fr       */
+/*   Updated: 2022/08/24 14:11:13 by vde-vasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int	ft_putchar(char c)
 

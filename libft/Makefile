@@ -3,43 +3,56 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vde-vasc <vde-vasc@student.42.rio>         +#+  +:+       +#+         #
+#    By: vde-vasc <vde-vasc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/13 04:36:32 by vde-vasc          #+#    #+#              #
-#    Updated: 2022/08/23 23:46:24 by vde-vasc         ###   ########.fr        #
+#    Created: 2022/05/06 18:25:11 by vde-vasc          #+#    #+#              #
+#    Updated: 2022/08/24 14:07:57 by vde-vasc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= libft.a
+SRCS	=   ft_isascii.c ft_isprint.c ft_strlen.c ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c ft_isalpha.c ft_isdigit.c \
+			ft_isalnum.c ft_atoi.c ft_bzero.c ft_memset.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c \
+			ft_memcmp.c ft_strnstr.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_putchar_fd.c ft_putstr_fd.c ft_strtrim.c \
+			ft_split.c ft_itoa.c ft_putendl_fd.c ft_putnbr_fd.c \
+			ft_strmapi.c ft_striteri.c printf_utils.c ft_puthexa.c ft_printf.c argument_case.c
 
-CFLAGS			= -Wall -Wextra -Werror 
-CC				= gcc
-LIBFLAGS		= -rcs
-RM				= rm -f
+BONUS_S	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c
 
-D_LIBFT			= ./libft
-LIBFT			= ./libft/libft.a
+OBJS	=	${SRCS:.c=.o}
 
-FT_PRINTF		= printf_utils.c ft_puthexa.c ft_printf.c argument_case.c 
-OBJECTS			= $(FT_PRINTF:.c=.o)
+OBJS_BONUS	= ${BONUS_S:.c=.o}
 
-all:	$(NAME)
+NAME	=	libft.a
 
-$(NAME): $(LIBFT) $(OBJECTS)
-	cp $(LIBFT) $(NAME)
-	ar $(LIBFLAGS) $(NAME) $(OBJECTS)
+LIBNAME	=	-lft
 
-$(LIBFT): $(D_LIBFT)
-	$(MAKE) -C $(D_LIBFT)
+CC	=	cc
+
+AR	=	ar
+
+LBFLAGS	=	rcs
+
+RM	=	rm -f
+
+CFLAGS	=	-Wall -Wextra -Werror
+
+.c.o:
+	${CC} ${CFLAGS} -c $< 
+	
+$(NAME):	${OBJS}
+	${AR} ${LBFLAGS} $(NAME) ${OBJS}
+
+all:	${NAME}
+
+bonus: ${OBJS_BONUS}
+	${AR} ${LBFLAGS} $(NAME) ${OBJS_BONUS}
 
 clean:
-	$(MAKE) clean -C $(D_LIBFT)
-	$(RM) $(OBJECTS)
-
+	${RM} ${OBJS} ${OBJS_BONUS}
+	
 fclean:	clean
-	$(MAKE) fclean -C $(D_LIBFT)
-	$(RM) $(NAME)
+	${RM} $(NAME)
+	
+re:	fclean all
 
-re: fclean all
-
-.PHONY: all re clean fclean
+.PHONY	=	all clean fclean re
