@@ -6,7 +6,7 @@
 #    By: vde-vasc <vde-vasc@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/23 21:45:07 by vde-vasc          #+#    #+#              #
-#    Updated: 2022/08/23 23:17:56 by vde-vasc         ###   ########.fr        #
+#    Updated: 2022/08/23 23:58:24 by vde-vasc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ $(SERVER): $(NAME)
 	gcc -Wall -Wextra -Werror server.c $(NAME) -o $(SERVER)
 
 clean:
-	$(MAKE) fclean -C ./libft
+	@$(MAKE) fclean -C ./libft
+	@rm -rf $(NAME)
 
 fclean: clean
 	rm -rf $(SERVER)
