@@ -6,7 +6,7 @@
 /*   By: vde-vasc <vde-vasc@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 18:17:41 by vde-vasc          #+#    #+#             */
-/*   Updated: 2022/12/26 17:05:49 by dmatavel         ###   ########.fr       */
+/*   Updated: 2022/12/26 17:23:10 by dmatavel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,37 +32,46 @@ void	transl_char_bit(int pid, char sign)
 /*
 ** The first if checks if there's an argv[1] before calling ft_atoi.
 ** If the program tries to call ft_atoi with an argument that doesn't exits
-** it'll get segfault; The second if (into the while) prevents the user from passing an non-numerical
-** argument in the PID's placeholder,  what could lead to an undefined behavior.
+** it'll get segfault; The second if  prevents the user from passing
+** an non-numerical argument in the PID's placeholder, what could lead
+** to an undefined behavior.
 */
+
+int	check_invalid_pid(char *argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (!ft_isdigit(argv[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 int	main(int argc, char *argv[])
 {
 	int	pid;
 	int	i;
-	int	j;
 
-	i = 0;
 	if (argc != 3)
 	{
 		ft_printf("Number of arguments invalid!");
 		exit(EXIT_FAILURE);
 	}
 	pid = ft_atoi(argv[1]);
-	while (argv[1][i])
+	if (check_invalid_pid(argv[1]))
 	{
-		if (!ft_isdigit(argv[1][i]))
-		{
-			ft_printf("PIDs are composed of digits only.\n");
-			exit(EXIT_FAILURE);
-		}
-		i++;
+		ft_printf("PIDs are composed of digits only.\n");
+		exit(EXIT_FAILURE);
 	}
-	j = 0;
-	while (argv[2][j])
+	i = 0;
+	while (argv[2][i])
 	{
-		transl_char_bit(pid, argv[2][j]);
-		j++;
+		transl_char_bit(pid, argv[2][i]);
+		i++;
 	}
 	return (0);
 }
